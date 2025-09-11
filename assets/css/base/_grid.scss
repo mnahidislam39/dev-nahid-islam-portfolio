@@ -1,139 +1,136 @@
- /*------grid $grid_columns column-----------*/
- .container {
-     width: 100%;
-     padding: 0 30px;
-     margin: 0 auto;
+/*------grid $grid_columns column-----------*/
+.container {
+  width: 100%;
+  padding: 0 30px;
+  margin: 0 auto;
 
-     .row {
-         display: flex;
-         flex-wrap: wrap;
-         margin: 0 -15px;
-     }
- }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+}
 
+$grid_columns: 12;
+$grid_xxl_brakepoint: 1400px;
+$grid_xl_brakepoint: 1200;
+$grid_lg_brakepoint: 992px;
+$grid_md_brakepoint: 768px;
+$grid_sm_brakepoint: 576px;
 
- $grid_columns: 12;
- $grid_xxl_brakepoint: 1400px;
- $grid_xl_brakepoint: 1200;
- $grid_lg_brakepoint: 992px;
- $grid_md_brakepoint: 768px;
- $grid_sm_brakepoint: 576px;
+/*==== max-width 540px ====*/
+@media (max-width: $grid_sm_brakepoint) {
+  .container {
+    width: 100%;
+  }
 
- /*==== max-width 540px ====*/
- @media (max-width: $grid_sm_brakepoint) {
-     .container {
-         width: 100%;
-     }
+  @for $i from 1 through $grid_columns {
+    .col-sm-#{$i} {
+      width: 100%;
+      padding: 0 10px;
+    }
+  }
+}
 
-     @for $i from 1 through $grid_columns {
-         .col-sm-#{$i} {
-             width: 100%;
-             padding: 0 10px;
-         }
-     }
- }
+/*==== min-width 540px ====*/
+@media (min-width: $grid_sm_brakepoint) {
+  .container {
+    width: 540px;
+  }
 
- /*==== min-width 540px ====*/
- @media (min-width:$grid_sm_brakepoint) {
-     .container {
-         width: 540px;
-     }
+  @for $i from 1 through $grid_columns {
+    .col-sm-#{$i} {
+      width: (100 / $grid_columns) * $i * 1%;
+      padding: 0 10px;
+    }
+  }
+}
 
-     @for $i from 1 through $grid_columns {
-         .col-sm-#{$i} {
-             width: (100/$grid_columns)*$i*1%;
-             padding: 0 10px;
-         }
-     }
- }
+/*==== min-width 768px ====*/
+@media (min-width: $grid_md_brakepoint) {
+  .container {
+    width: 720px;
+  }
 
- /*==== min-width 768px ====*/
- @media (min-width:$grid_md_brakepoint) {
-     .container {
-         width: 720px;
-     }
+  @for $i from 1 through $grid_columns {
+    .col-md-#{$i} {
+      width: (100 / $grid_columns) * $i * 1%;
+      padding: 0 10px;
+    }
+  }
+}
 
-     @for $i from 1 through $grid_columns {
-         .col-md-#{$i} {
-             width: (100/$grid_columns)*$i*1%;
-             padding: 0 10px;
-         }
-     }
- }
+/*==== min-width 992px ====*/
+@media (min-width: $grid_lg_brakepoint) {
+  .container {
+    width: 960px;
+  }
 
- /*==== min-width 992px ====*/
- @media (min-width:$grid_lg_brakepoint) {
-     .container {
-         width: 960px;
-     }
+  @for $i from 1 through $grid_columns {
+    .col-lg-#{$i} {
+      width: (100 / $grid_columns) * $i * 1%;
+      padding: 0 10px;
+    }
+  }
+}
 
-     @for $i from 1 through $grid_columns {
-         .col-lg-#{$i} {
-             width: (100/$grid_columns)*$i*1%;
-             padding: 0 10px;
-         }
-     }
- }
+/*==== min-width $grid_columns00px ====*/
+@media (min-width: $grid_xl_brakepoint) {
+  .container {
+    width: 1140px;
+  }
 
- /*==== min-width $grid_columns00px ====*/
- @media (min-width:$grid_xl_brakepoint) {
-     .container {
-         width: 1140px;
-     }
+  @for $i from 1 through $grid_columns {
+    .col-xl-#{$i} {
+      width: (100 / $grid_columns) * $i * 1%;
+      padding: 0 15px;
+    }
+  }
+}
 
-     @for $i from 1 through $grid_columns {
+/*==== min-width 1400px ====*/
+@media (min-width: $grid_xxl_brakepoint) {
+  .container {
+    width: 1320px;
+    padding: 0 10px;
+  }
 
-         .col-xl-#{$i} {
-             width: (100/$grid_columns)*$i*1%;
-             padding: 0 15px;
-         }
-     }
- }
+  @for $i from 1 through $grid_columns {
+    .col-xxl-#{$i} {
+      width: (100 / $grid_columns) * $i * 1%;
+      padding: 0 15px;
+    }
+  }
+}
 
- /*==== min-width 1400px ====*/
- @media (min-width:$grid_xxl_brakepoint) {
-     .container {
-         width: 1320px;
-         padding: 0 10px;
-     }
+/* responsive mixin */
 
-     @for $i from 1 through $grid_columns {
+@mixin min-xxl {
+  @media (min-width: $grid_xxl_brakepoint) {
+    @content;
+  }
+}
 
-         .col-xxl-#{$i} {
-             width: (100/$grid_columns)*$i*1%;
-             padding: 0 15px;
-         }
-     }
- }
+@mixin min-xl {
+  @media (min-width: $grid_xl_brakepoint) and (max-width: $grid_xxl_brakepoint) {
+    @content;
+  }
+}
 
+@mixin min-lg {
+  @media (min-width: $grid_lg_brakepoint) and (max-width: $grid_xl_brakepoint) {
+    @content;
+  }
+}
 
- /* responsive mixin */
- @mixin min-xxl {
-     @media (min-width:$grid_xxl_brakepoint) {
-         @content;
-     }
- }
+@mixin min-md {
+  @media (min-width: $grid_md_brakepoint) and (max-width: $grid_lg_brakepoint) {
+    @content;
+  }
+}
 
- @mixin min-xl {
-     @media (min-width:$grid_xl_brakepoint) and (max-width:$grid_xxl_brakepoint) {
-         @content;
-     }
- }
-
- @mixin min-lg {
-     @media (min-width:$grid_lg_brakepoint) and (max-width:$grid_xl_brakepoint) {
-         @content;
-     }
- }
-
- @mixin min-md {
-     @media (min-width:$grid_md_brakepoint) and (max-width:$grid_lg_brakepoint) {
-         @content;
-     }
- }
-
- @mixin min-xs {
-     @media (max-width:$grid_md_brakepoint) {
-         @content;
-     }
- }
+@mixin min-xs {
+  @media (max-width: $grid_md_brakepoint) {
+    @content;
+  }
+}
