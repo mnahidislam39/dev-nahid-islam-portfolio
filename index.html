@@ -31,7 +31,6 @@
 
 <body>
 
-
    <!--main_area start -->
    <section class="main_area d-flex ">
       <!-- container Start-->
@@ -658,15 +657,17 @@
                   <div class="contect_right pt-20" id="contact_me">
                      <form class="form d-grid" id="contactForm" action="process_form.php" method="post"
                         data-aos="fade-up" data-aos-duration="3000" data-aos-easing="ease-in-out">
-                        <input type="text" class="name" name="name" required
-                           placeholder="note: Still in development so please contact me via the above information.">
-                        <input type="text" class="email" name="email" id="email" required
-                           placeholder="note: Still in development so please contact me via the above information.">
-                        <textarea class="textarea" name="message" required
-                           placeholder="note: Still in development so please contact me via the above information."></textarea>
+                        <input type="text" class="name" name="name"
+                           placeholder="Note: Still in development so please contact me via the above information.">
+                        <input type="text" class="email" name="email" id="email"
+                           placeholder="Note: Still in development so please contact me via the above information.">
+                        <textarea class="textarea" name="message"
+                           placeholder="Note: Still in development so please contact me via the above information."></textarea>
                         <input type="submit" class="submit" name="submit" id="submit" value="send message">
                      </form>
                   </div>
+
+
                </div>
                <div class="contact_footer d-flex jc-center pt-10">
                   <p>copyright @ copy 2023 all right reserved . <span> design &#38; developed by mnahidislam39</span>
@@ -675,12 +676,48 @@
             </div>
          </div>
          <!-- contact_area End -->
+
+         <!-- Popup Container -->
+         <!-- Maintenance Mode Popup -->
+         <div id="maintenancePopup" class="popup">
+            <div class="popup-content">
+               <span class="close-btn" title="Close">&times;</span>
+               <h2 style="color: #222; font-weight: 700;">
+                  ⚙️ Under Maintenance ⏳
+               </h2>
+
+               <p style="color: #555; font-weight: 400;">
+                  I’m updating my portfolio. Please contact me via WhatsApp or Email below. 😊
+               </p>
+
+
+               <div class="contact-buttons">
+                  <a href="https://wa.me/8801761005639" target="_blank" class="btn whatsapp-btn" aria-label="WhatsApp">
+                     <img src="assets/images/whatsapp.png" alt="WhatsApp" style="width:24px; height:24px;">
+                  </a>
+                  <a href="mailto:devnahidilsam4@gmail.com" class="btn email-btn" aria-label="Email">
+                     <img src="assets/images/envelope.png" alt="Email" style="width:24px; height:24px;">
+                  </a>
+               </div>
+
+               <p style="margin-top: 20px; color: #ca2a2a; font-size: 14px;">
+                  Closing in <span id="countdown">5</span>s
+               </p>
+            </div>
+         </div>
+
+
+         <!-- Popup end -->
       </div>
       <!-- container End-->
+
    </section>
    <!-- main_area end -->
 
 
+
+
+   <!-- scripts  -->
    <!-- Fontawesome JS -->
    <script src="assets/js/font_awesome.min.js"></script>
    <!-- typed JS -->
