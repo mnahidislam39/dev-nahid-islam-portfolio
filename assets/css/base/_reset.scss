@@ -26,8 +26,6 @@ body {
   // -ms-transition: all 0.3s ease-in-out;
   // -o-transition: all 0.3s ease-in-out;
   // transition: all 0.3s ease-in-out;
-
-
 }
 
 @media (min-width: 992px) {
@@ -40,12 +38,7 @@ body {
     background-color: var(--primary);
     border-radius: 4px;
   }
-
-
-
 }
-
-
 
 hr {
   margin: 0.8rem 0;
@@ -132,6 +125,9 @@ p {
 .title_box {
   text-transform: capitalize;
   font-size: 20px;
+  @include min-md {
+    font-size: 30px !important;
+  }
   color: var(--dark);
   letter-spacing: 0px;
   display: flex;
@@ -176,20 +172,17 @@ p {
   //   opacity 0s linear;
 }
 
-
-@media (min-width:1024px) {
+@media (min-width: 1024px) {
   .title_box {
-    font-size: 22px
+    font-size: 30px;
   }
 }
 
-@media (min-width:1400px) {
+@media (min-width: 1400px) {
   .section {
     @include h_vh100;
   }
 }
-
-
 
 .container {
   @include h_vh100;
