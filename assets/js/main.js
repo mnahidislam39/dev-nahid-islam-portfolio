@@ -167,7 +167,7 @@ if (window.innerWidth <= laptop_width) {
     "fade_in",
     "fade_out",
     "animated",
-    "hidden"
+    "hidden",
   );
   removeClassById(
     "resume",
@@ -175,7 +175,7 @@ if (window.innerWidth <= laptop_width) {
     "fade_in",
     "fade_out",
     "animated",
-    "hidden"
+    "hidden",
   );
   removeClassById(
     "service",
@@ -183,7 +183,7 @@ if (window.innerWidth <= laptop_width) {
     "fade_in",
     "fade_out",
     "animated",
-    "hidden"
+    "hidden",
   );
   removeClassById(
     "portfolio",
@@ -191,7 +191,7 @@ if (window.innerWidth <= laptop_width) {
     "fade_in",
     "fade_out",
     "animated",
-    "hidden"
+    "hidden",
   );
   removeClassById(
     "contact",
@@ -199,7 +199,7 @@ if (window.innerWidth <= laptop_width) {
     "fade_in",
     "fade_out",
     "animated",
-    "hidden"
+    "hidden",
   );
 
   logo.addEventListener("click", () => {
@@ -228,35 +228,67 @@ nav_li.forEach((item) => {
     item.classList.add("active");
   });
 });
-// catagory
-let catagory_ul = getAllClass(".catagory_ul li");
-catagory_ul.forEach((catagory_ul_li) => {
-  catagory_ul_li.addEventListener("click", () => {
-    catagory_ul.forEach((catagory_ul_li) => {
-      catagory_ul_li.classList.remove("activeCaLi");
+
+// project functions
+function renderPortfolio(projects) {
+  const gallery = document.getElementById("portfolio-gallery");
+  if (!gallery) return;
+
+  gallery.innerHTML = "";
+
+  projects.forEach((project) => {
+    const aosAttr = project.aos ? `data-aos="${project.aos}"` : "";
+
+    const projectHtml = `
+      <div class="single_portfolio" data-name="${project.category}" ${aosAttr}>
+         <img src="${project.mainImage}" alt="${project.title}" loading="lazy">
+         <div class="project_icon">
+            <a href="${project.laptopView}" class="project_icon_link_galleryVew" title="desktop view">
+               <i class="fas fa-eye project_icon_gallery_i"></i>
+            </a>
+            <a href="${project.tabletView}" class="project_icon_link_galleryVew" title="tablet view"></a>
+            <a href="${project.mobileView}" class="project_icon_link_galleryVew" title="mobile view"></a>
+            <a href="${project.liveLink}" class="project_icon_link_singleVew" target="_blank" title="view website">
+               <i class="fas fa-link i"></i>
+            </a>
+         </div>
+      </div>
+    `;
+    gallery.insertAdjacentHTML("beforeend", projectHtml);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderPortfolio(myProjects);
+
+  const categoryLis = document.querySelectorAll(".catagory_ul li");
+  const categorySpans = document.querySelectorAll(".catagory_ul li span");
+
+  const filterPortfolio = (e) => {
+    const activeSpan = document.querySelector(".catagory_ul li span.active");
+    if (activeSpan) activeSpan.classList.remove("active");
+    e.target.classList.add("active");
+
+    categoryLis.forEach((li) => li.classList.remove("activeCaLi"));
+    e.target.parentElement.classList.add("activeCaLi");
+
+    const targetCategory = e.target.dataset.name;
+    const portfolioItems = document.querySelectorAll(
+      ".portfolio_contents .single_portfolio",
+    );
+
+    portfolioItems.forEach((item) => {
+      item.classList.add("hide");
+      if (item.dataset.name === targetCategory || targetCategory === "all") {
+        item.classList.remove("hide");
+      }
     });
-    catagory_ul_li.classList.add("activeCaLi");
+  };
+
+  categorySpans.forEach((span) => {
+    span.addEventListener("click", filterPortfolio);
   });
 });
-let catagory_ul_li = getAllClass(".catagory_ul li span");
-let portfolio_cnt = getAllClass(".portfolio_contents .single_portfolio");
-let filterPortfolio = (e) => {
-  getClass(".active").classList.remove("active");
-  e.target.classList.add("active");
-
-  portfolio_cnt.forEach((single_project) => {
-    single_project.classList.add("hide");
-    if (
-      single_project.dataset.name === e.target.dataset.name ||
-      e.target.dataset.name === "all"
-    ) {
-      single_project.classList.remove("hide");
-    }
-  });
-};
-catagory_ul_li.forEach((span) =>
-  span.addEventListener("click", filterPortfolio)
-);
 
 // Start Popup
 document.addEventListener("DOMContentLoaded", () => {

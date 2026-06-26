@@ -1,0 +1,40 @@
+// 1. Project Data Array
+const myProjects = [
+  {
+    title: "Kushtia Polytechnic Institute",
+    category: "education",
+    mainImage: "assets/images/education/kpi.jpg",
+    laptopView: "assets/images/education/kpi_laptop_vew.png",
+    tabletView: "assets/images/education/kpi_tablet_vew.png",
+    mobileView: "assets/images/education/kpi_mobile_vew.png",
+    liveLink: "https://mnahidislam39.github.io/kushtia-polytechnic-institute/",
+  },
+  {
+    title: "Grow Your Business",
+    category: "e-commarce",
+    mainImage: "assets/images/business/grow-your-business.png",
+    laptopView: "assets/images/business/home.png",
+    tabletView: "assets/images/business/about.png",
+    mobileView: "assets/images/business/project.png",
+    liveLink: "https://mnahidislam39.github.io/business",
+  },
+  {
+    title: "Portfolio 2",
+    category: "portfolio",
+    mainImage: "assets/images/business/business2.png",
+    laptopView: "assets/images/business/homeb.png",
+    tabletView: "assets/images/business/portfoliob.png",
+    mobileView: "assets/images/business/contactb.png",
+    liveLink: "https://mnahidislam39.github.io/portfolio2",
+  },
+  {
+    title: "Grow Axit Business",
+    category: "portfolio",
+    mainImage: "assets/images/portfolio/grow-axit-busiiness.jpg",
+    laptopView: "assets/images/portfolio/grow-axit-busiiness.jpg",
+    tabletView: "assets/images/portfolio/grow-axit-busiiness.jpg",
+    mobileView: "assets/images/portfolio/grow-axit-busiiness.jpg",
+    liveLink: "https://mnahidislam39.github.io/grow-axit-business",
+    aos: "zoom-in",
+  },
+];
