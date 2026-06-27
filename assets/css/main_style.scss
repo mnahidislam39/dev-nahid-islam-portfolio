@@ -638,12 +638,17 @@
             flex-direction: column-reverse;
 
             h4 {
-              font-weight: normal;
+              font-weight: 800;
+              font-size: 17px;
             }
 
             p {
               font-weight: normal;
               padding: 10px 0;
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              align-items: flex-start;
               @include w100;
             }
           }
@@ -1520,10 +1525,18 @@
         -moz-border-radius: 0 4px 4px 0;
         -webkit-border-radius: 0 4px 4px 0;
         -khtml-border-radius: 0 4px 4px 0;
-        transition: visibility 1s linear, opacity 0s linear;
-        -moz-transition: visibility 1s linear, opacity 0s linear;
-        -webkit-transition: visibility 1s linear, opacity 0s linear;
-        -o-transition: visibility 1s linear, opacity 0s linear;
+        transition:
+          visibility 1s linear,
+          opacity 0s linear;
+        -moz-transition:
+          visibility 1s linear,
+          opacity 0s linear;
+        -webkit-transition:
+          visibility 1s linear,
+          opacity 0s linear;
+        -o-transition:
+          visibility 1s linear,
+          opacity 0s linear;
       }
 
       .home {

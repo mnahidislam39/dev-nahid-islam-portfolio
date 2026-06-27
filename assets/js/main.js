@@ -31,48 +31,83 @@ window.addEventListener("scroll", () => {
 });
 
 // Template Render Engines
-function renderPortfolio(projects) {
-  const gallery = document.getElementById("portfolio-gallery");
-  if (!gallery) return;
-  gallery.innerHTML = "";
-  projects.forEach((project) => {
-    const aosAttr = project.aos ? `data-aos="${project.aos}"` : "";
-    const projectHtml = `
-      <div class="single_portfolio" data-name="${project.category}" ${aosAttr}>
-         <img src="${project.mainImage}" alt="${project.title}" loading="lazy">
-         <div class="project_icon">
-            <a href="${project.laptopView}" class="project_icon_link_galleryVew" title="desktop view">
-               <i class="fas fa-eye project_icon_gallery_i"></i>
-            </a>
-            <a href="${project.tabletView}" class="project_icon_link_galleryVew" title="tablet view"></a>
-            <a href="${project.mobileView}" class="project_icon_link_galleryVew" title="mobile view"></a>
-            <a href="${project.liveLink}" class="project_icon_link_singleVew" target="_blank" title="view website">
-               <i class="fas fa-link i"></i>
-            </a>
-         </div>
-      </div>
-    `;
-    gallery.insertAdjacentHTML("beforeend", projectHtml);
+// Render About
+function renderAboutSection(data) {
+  if (!data) return;
+
+  const bioElem = document.getElementById("about-bio");
+  const subtitleElem = document.getElementById("about-subtitle");
+
+  // textContent এর বদলে innerHTML ব্যবহার করা হয়েছে যেন HTML ট্যাগ ও বোল্ড কাজ করে
+  if (bioElem) bioElem.innerHTML = data.bio;
+  if (subtitleElem) subtitleElem.innerHTML = `<b>${data.subtitle}</b>`;
+
+  const infoListElem = document.getElementById("about-info-list");
+  if (infoListElem && data.personalInfo) {
+    infoListElem.innerHTML = Object.entries(data.personalInfo)
+      .map(
+        ([key, value]) => `
+      <li>
+         <strong style="text-transform: capitalize;">${key}</strong>${value}
+      </li>
+    `,
+      )
+      .join("");
+  }
+
+  const generateSkillsHtml = (skills) =>
+    skills
+      .map(
+        (skill) => `
+    <div class="progress">
+       <div class="title">
+          <h3>${skill.name}</h3>
+       </div>
+       <div class="barline">
+          <div class="countbar" data-percentNumber="${skill.percent}"></div>
+       </div>
+    </div>
+  `,
+      )
+      .join("");
+
+  const frontContainer = document.getElementById("frontend-skills-container");
+  const backContainer = document.getElementById("backend-skills-container");
+  const cmsContainer = document.getElementById("cmsSkills-container");
+  const otherContainer = document.getElementById("otherTools-container");
+
+  if (frontContainer && data.frontEndSkills) {
+    frontContainer.innerHTML = generateSkillsHtml(data.frontEndSkills);
+  }
+  if (backContainer && data.backEndSkills) {
+    backContainer.innerHTML = generateSkillsHtml(data.backEndSkills);
+  }
+  if (cmsContainer && data.cmsSkills) {
+    cmsContainer.innerHTML = generateSkillsHtml(data.cmsSkills);
+  }
+  if (otherContainer && data.otherTools) {
+    otherContainer.innerHTML = generateSkillsHtml(data.otherTools);
+  }
+}
+// Dynamic Progress Skillbar Animation Engine
+function initSkillBars() {
+  let numberPercent = document.querySelectorAll(".countbar");
+  numberPercent.forEach((items) => {
+    let startCount = 0;
+    let targetPercent = parseInt(items.dataset.percentnumber) || 0;
+
+    let stop = setInterval(() => {
+      if (startCount >= targetPercent) {
+        clearInterval(stop);
+      } else {
+        startCount++;
+        items.innerHTML = `<h3>${startCount}%</h3>`;
+        items.style.width = `${startCount}%`;
+      }
+    }, 25);
   });
 }
-
-function renderServices(services) {
-  const containerElem = document.getElementById("services-container");
-  if (!containerElem) return;
-  containerElem.innerHTML = "";
-  services.forEach((service) => {
-    const serviceHtml = `
-      <div class="single_service">
-         <span><i class="${service.iconClass}"></i></span>
-         <h5>${service.title}</h5>
-         <p>${service.description}</p>
-         <a href="#contact" class="btn btn_border">Get a Quote</a>
-      </div>
-    `;
-    containerElem.insertAdjacentHTML("beforeend", serviceHtml);
-  });
-}
-
+// Render Tutorials
 function renderTutorials(tutorials) {
   const containerElem = document.getElementById("tutorials-video-container");
   if (!containerElem) return;
@@ -102,6 +137,49 @@ function renderTutorials(tutorials) {
     containerElem.insertAdjacentHTML("beforeend", tutorialHtml);
   });
 }
+// Render Services
+function renderServices(services) {
+  const containerElem = document.getElementById("services-container");
+  if (!containerElem) return;
+  containerElem.innerHTML = "";
+  services.forEach((service) => {
+    const serviceHtml = `
+      <div class="single_service">
+         <span><i class="${service.iconClass}"></i></span>
+         <h5>${service.title}</h5>
+         <p>${service.description}</p>
+         <a href="#contact" class="btn btn_border">Get a Quote</a>
+      </div>
+    `;
+    containerElem.insertAdjacentHTML("beforeend", serviceHtml);
+  });
+}
+// Render Portfolio
+function renderPortfolio(projects) {
+  const gallery = document.getElementById("portfolio-gallery");
+  if (!gallery) return;
+  gallery.innerHTML = "";
+  projects.forEach((project) => {
+    const aosAttr = project.aos ? `data-aos="${project.aos}"` : "";
+    const projectHtml = `
+      <div class="single_portfolio" data-name="${project.category}" ${aosAttr}>
+         <img src="${project.mainImage}" alt="${project.title}" loading="lazy">
+         <div class="project_icon">
+            <a href="${project.laptopView}" class="project_icon_link_galleryVew" title="desktop view">
+               <i class="fas fa-eye project_icon_gallery_i"></i>
+            </a>
+            <a href="${project.tabletView}" class="project_icon_link_galleryVew" title="tablet view"></a>
+            <a href="${project.mobileView}" class="project_icon_link_galleryVew" title="mobile view"></a>
+            <a href="${project.liveLink}" class="project_icon_link_singleVew" target="_blank" title="view website">
+               <i class="fas fa-link i"></i>
+            </a>
+         </div>
+      </div>
+    `;
+    gallery.insertAdjacentHTML("beforeend", projectHtml);
+  });
+}
+
 // Single Centralized Initialization (DOM Ready Event)
 document.addEventListener("DOMContentLoaded", () => {
   // DOM Elements Selection
@@ -115,9 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = getClass(".container");
 
   // Render dynamic views with window check to prevent ordering bugs
-  renderPortfolio(window.myProjects || myProjects);
-  renderServices(window.myServices || myServices);
+  renderAboutSection(window.myAboutData || myAboutData);
   renderTutorials(window.myTutorials || myTutorials);
+  renderServices(window.myServices || myServices);
+  renderPortfolio(window.myProjects || myProjects);
 
   // Initialize Magnific Popup after rendering elements
   $(".project_icon_link_galleryVew").magnificPopup({
