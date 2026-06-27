@@ -179,7 +179,34 @@ function renderPortfolio(projects) {
     gallery.insertAdjacentHTML("beforeend", projectHtml);
   });
 }
+// Render Contact
+function renderContactSection(data) {
+  if (!data) return;
 
+  const mapElem = document.getElementById("contact-map");
+  const headingElem = document.getElementById("contact-heading");
+  const subHeadingElem = document.getElementById("contact-subheading");
+  const phoneElem = document.getElementById("info-phone");
+  const emailElem = document.getElementById("info-email");
+  const addressElem = document.getElementById("info-address");
+
+  const nameInput = document.getElementById("contact-name-input");
+  const emailInput = document.getElementById("contact-email-input");
+  const msgInput = document.getElementById("contact-msg-input");
+
+  // ডেটা পুশ করা
+  if (mapElem) mapElem.src = data.mapSrc;
+  if (headingElem) headingElem.textContent = data.heading;
+  if (subHeadingElem) subHeadingElem.textContent = data.subHeading;
+  if (phoneElem) phoneElem.textContent = data.phone;
+  if (emailElem) emailElem.textContent = data.email;
+  if (addressElem) addressElem.textContent = data.address;
+
+  // প্লেসহোল্ডার টেক্সট ডাইনামিক করা
+  if (nameInput) nameInput.placeholder = data.placeholderText;
+  if (emailInput) emailInput.placeholder = data.placeholderText;
+  if (msgInput) msgInput.placeholder = data.placeholderText;
+}
 // Single Centralized Initialization (DOM Ready Event)
 document.addEventListener("DOMContentLoaded", () => {
   // DOM Elements Selection
@@ -197,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTutorials(window.myTutorials || myTutorials);
   renderServices(window.myServices || myServices);
   renderPortfolio(window.myProjects || myProjects);
+  renderContactSection(window.myContactData || myContactData);
 
   // Initialize Magnific Popup after rendering elements
   $(".project_icon_link_galleryVew").magnificPopup({
@@ -380,7 +408,9 @@ document.addEventListener("DOMContentLoaded", () => {
     span.addEventListener("click", filterPortfolio),
   );
 
-  // Form Management & Custom Popup Countdown
+  // ==========================================
+  // Form Management & Custom Popup Countdown (Restored & Enhanced)
+  // ==========================================
   const form = document.getElementById("contactForm");
   const popup = document.getElementById("maintenancePopup");
   const closeBtn = document.querySelector(".close-btn");
@@ -390,6 +420,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form && popup && closeBtn && countdownElem) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      // ডাইনামিক আইডি দিয়ে ভ্যালুগুলো চেক করা
+      const name = document.getElementById("contact-name-input").value.trim();
+      const email = document.getElementById("contact-email-input").value.trim();
+      const message = document.getElementById("contact-msg-input").value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // পপআপ শো করা
       popup.style.display = "flex";
 
       let countdown = 10;
@@ -405,11 +447,19 @@ document.addEventListener("DOMContentLoaded", () => {
           popup.style.display = "none";
         }
       }, 1000);
+      form.reset();
     });
 
     closeBtn.addEventListener("click", () => {
       popup.style.display = "none";
       if (countdownInterval) clearInterval(countdownInterval);
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+        if (countdownInterval) clearInterval(countdownInterval);
+      }
     });
   }
 

@@ -248,53 +248,47 @@
          <!-- portfolio_area End -->
 
          <!-- contact_area Start -->
-         <div class="contact section animated fade_out hidden " id="contact">
+         <div class="contact section animated fade_out hidden" id="contact">
             <div class="sub_card">
                <div class="title_box">
                   <h4><span>contact</span> me</h4>
                </div>
                <div class="map pt-30">
-                  <iframe
-                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58256.84832685325!2d88.9842398893949!3d24.13477606834945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fea06f9ba1dd67%3A0x8c9a9a127b3e1c7f!2sIshwardi!5e0!3m2!1sen!2sbd!4v1701869211072!5m2!1sen!2sbd"></iframe>
+                  <iframe id="contact-map" src="" frameborder="0" allowfullscreen></iframe>
                </div>
                <h4 class="d-flex ai-center jc-center fd-column pt-30">
-                  Have You Any Question?
-                  <span>I'm At Your Services.</span>
+                  <span id="contact-heading"></span>
+                  <span id="contact-subheading" style="color: var(--main-color);"></span>
                </h4>
                <div class="contact_field pt-20">
                   <div class="contect_left">
                      <div class="contact_info_sec">
                         <div class="single_info">
                            <span><i class="fas fa-headset"></i></span>
-                           <p>+8801761-005639</p>
+                           <p id="info-phone"></p>
                         </div>
                         <div class="single_info">
                            <span><i class="fas fa-envelope-open-text"></i></span>
-                           <p class="text-lowercase">devnahidislam4@gmail.com </p>
+                           <p class="text-lowercase" id="info-email"></p>
                         </div>
                         <div class="single_info">
                            <span> <i class="fas fa-map-marked-alt"></i></span>
-                           <p>ishwardi, pabna, dhaka, BD</p>
+                           <p id="info-address"></p>
                         </div>
                      </div>
                   </div>
                   <div class="contect_right pt-20" id="contact_me">
                      <form class="form d-grid" id="contactForm" action="process_form.php" method="post"
                         data-aos-duration="3000">
-                        <input type="text" class="name" name="name"
-                           placeholder="Note: Still in development so please contact me via the above information.">
-                        <input type="text" class="email" name="email" id="email"
-                           placeholder="Note: Still in development so please contact me via the above information.">
-                        <textarea class="textarea" name="message"
-                           placeholder="Note: Still in development so please contact me via the above information."></textarea>
+                        <input type="text" class="name" id="contact-name-input" name="name">
+                        <input type="text" class="email" name="email" id="contact-email-input">
+                        <textarea class="textarea" id="contact-msg-input" name="message"></textarea>
                         <input type="submit" class="submit" name="submit" id="submit" value="send message">
                      </form>
                   </div>
-
-
                </div>
                <div class="contact_footer d-flex jc-center pt-10">
-                  <p>copyright @ copy 2023 all right reserved . <span> design &#38; developed by mnahidislam39</span>
+                  <p>copyright @ copy 2026 all right reserved . <span> design &#38; developed by mnahidislam39</span>
                   </p>
                </div>
             </div>

@@ -121,8 +121,22 @@ const myProjects = [
   },
 ];
 
+// 5. Contact Data
+const myContactData = {
+  mapSrc:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58256.84832685325!2d88.9842398893949!3d24.13477606834945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fea06f9ba1dd67%3A0x8c9a9a127b3e1c7f!2sIshwardi!5e0!3m2!1sen!2sbd!4v1701869211072!5m2!1sen!2sbd",
+  heading: "Have You Any Question?",
+  subHeading: "I'm At Your Services.",
+  phone: "+8801761-005639",
+  email: "devnahidislam4@gmail.com",
+  address: "ishwardi, pabna, dhaka, BD",
+  placeholderText:
+    "Note: Still in development so please contact me via the above information.",
+};
+
 // Global context synchronization
 window.myAboutData = myAboutData;
 window.myTutorials = myTutorials;
 window.myServices = myServices;
 window.myProjects = myProjects;
+window.myContactData = myContactData;
