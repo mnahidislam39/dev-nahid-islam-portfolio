@@ -4,7 +4,7 @@ const myAboutData = {
 
    <span class="bio-second font-bold"> Alongside Shopify, I have strong expertise in HTML, CSS, Bootstrap, Tailwind CSS, SASS, JavaScript, jQuery, Vue.js, PHP, and Laravel, allowing me to handle both front-end and back-end development efficiently.</span>
 
-   <span class="bio-third font-bold">As a Team Leader, I manage project planning, guide developers, maintain code quality, and ensure timely project delivery. I am passionate about writing clean, maintainable, and scalable code while following modern development standards. </span>
+   <span class="bio-third font-bold">I manage project planning, guide developers, maintain code quality, and ensure timely project delivery. I am passionate about writing clean, maintainable, and scalable code while following modern development standards. </span>
 
    <span class="bio-four font-bold"> With strong problem-solving skills, leadership experience, and a collaborative mindset, I am committed to helping businesses grow by creating user-friendly, responsive, and high-performing web solutions. </span>`,
   subtitle:
@@ -12,7 +12,7 @@ const myAboutData = {
   personalInfo: {
     age: 24,
     residence: "Bangladesh",
-    freelance: "Available",
+    // freelance: "Available",
     address: "Ishwardi, Pabna, Dhaka, BD",
   },
   frontEndSkills: [
