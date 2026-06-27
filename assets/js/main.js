@@ -32,7 +32,7 @@ window.addEventListener("scroll", () => {
 
 // Template Render Engines
 
-// Render Home
+// Render Home & Typing Animation Engine
 function renderHomeSection(data) {
   if (!data) return;
 
@@ -62,6 +62,49 @@ function renderHomeSection(data) {
     `,
       )
       .join("");
+  }
+
+  // ==========================================
+  // Vanilla JS Typing Animation Logic
+  // ==========================================
+  const typedTextSpan = document.getElementById("typedText");
+  // যদি ডাটা ফাইলে typingRoles অ্যারে থাকে এবং HTML-এ typedText স্প্যান থাকে
+  if (typedTextSpan && data.typingRoles && data.typingRoles.length > 0) {
+    const words = data.typingRoles;
+    const typingSpeed = 100; // টাইপিং স্পিড (ms)
+    const erasingSpeed = 50; // মুছে ফেলার স্পিড (ms)
+    const newWordDelay = 2000; // শব্দ শেষ হওয়ার পর হোল্ড টাইম (ms)
+
+    let wordIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < words[wordIndex].length) {
+        typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed);
+      } else {
+        setTimeout(erase, newWordDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedTextSpan.textContent = words[wordIndex].substring(
+          0,
+          charIndex - 1,
+        );
+        charIndex--;
+        setTimeout(erase, erasingSpeed);
+      } else {
+        wordIndex++;
+        if (wordIndex >= words.length) wordIndex = 0;
+        setTimeout(type, typingSpeed + 500);
+      }
+    }
+
+    // অ্যানিমেশন শুরু করা
+    setTimeout(type, 500);
   }
 }
 

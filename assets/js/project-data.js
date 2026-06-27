@@ -6,6 +6,10 @@ const myHomeData = {
   lastName: "Islam",
   designation: "a Professional",
   cvLink: "assets/file/resumeOfnahid.pdf",
+
+  // Typing Roles
+  typingRoles: ["Shopify Developer", "Full-Stack Developer"],
+
   socialLinks: [
     {
       platform: "facebook",
