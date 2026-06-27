@@ -30,8 +30,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Template Render Engines
-
 // Render Home & Typing Animation Engine
 function renderHomeSection(data) {
   if (!data) return;
@@ -304,12 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPortfolio(window.myProjects || myProjects);
   renderContactSection(window.myContactData || myContactData);
 
-  // Initialize Magnific Popup after rendering elements
-  $(".project_icon_link_galleryVew").magnificPopup({
-    type: "image",
-    gallery: { enabled: true },
-  });
-
   // Dynamic Navigation Link Router
   if (window.innerWidth >= desktop_width) {
     if (logo) {
@@ -565,4 +557,55 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, 25);
   });
+});
+// ==========================================
+// Vanilla JS Lightbox / Popup Engine (Bulletproof Version)
+// ==========================================
+document.addEventListener("click", (e) => {
+  // আইকন, ফন্ট-অসাম বা লিঙ্কের যেকোনো জায়গায় ক্লিক করলে তার প্যারেন্ট অ্যাঙ্কর ট্র্যাক করবে
+  const clickedLink =
+    e.target.closest("a[title='desktop view']") ||
+    e.target.closest(".project_icon_link_galleryVew");
+
+  if (clickedLink) {
+    e.preventDefault();
+
+    // ডাইনামিকালি প্রতি ক্লিকে এলিমেন্ট চেক করা (null এরর এড়াতে)
+    const lightbox = document.getElementById("custom-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    if (lightbox && lightboxImg) {
+      const imgSrc = clickedLink.getAttribute("href");
+      if (imgSrc) {
+        lightboxImg.src = imgSrc;
+        lightbox.style.display = "flex";
+        // ছোট একটা ট্রিক যেন CSS Transition বা অ্যানিমেশনটা কাজ করে
+        setTimeout(() => lightbox.classList.add("show"), 50);
+      }
+    }
+  }
+});
+
+// পপআপ ক্লোজ করার গ্লোবাল ফাংশন
+function closeCustomLightbox() {
+  const lightbox = document.getElementById("custom-lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  if (lightbox) {
+    lightbox.classList.remove("show");
+    setTimeout(() => {
+      lightbox.style.display = "none";
+      if (lightboxImg) lightboxImg.src = "";
+    }, 300);
+  }
+}
+
+// ক্লোজ বাটনে এবং বাইরে ক্লিক করলে বন্ধ হওয়ার লজিক
+document.addEventListener("click", (e) => {
+  if (
+    e.target.classList.contains("lightbox-close") ||
+    e.target.id === "custom-lightbox"
+  ) {
+    closeCustomLightbox();
+  }
 });
