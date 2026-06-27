@@ -1,29 +1,39 @@
 // id return function
 function getId(get_id) {
-   const selcetId = document.getElementById(get_id);
-   return selcetId;
-};
+  return document.getElementById(get_id);
+}
 
 // clsss all return Function
 function getAllClass(all_class) {
-   const selectAllClass = document.querySelectorAll(all_class);
-   return selectAllClass;
-};
-// query_select  return Function
-function getClass(get_class) {
-   const selectClass = document.querySelector(get_class);
-   return selectClass;
-};
+  return document.querySelectorAll(all_class);
+}
 
-// get id and add class
-function addClassById(elementId, FClass, SClass, TClass, FrtClass, fiftClass) {
-   const element = document.getElementById(elementId);
-   element.classList.add(FClass, SClass, TClass, FrtClass, fiftClass);
-   return element;
-};
-// get id and remove class
-function removeClassById(elementId, FClass, SClass, TClass, FrtClass, fiftClass) {
-   const element = document.getElementById(elementId);
-   element.classList.remove(FClass, SClass, TClass, FrtClass, fiftClass);
-   return element;
-};
+// query_select return Function
+function getClass(get_class) {
+  return document.querySelector(get_class);
+}
+
+// get id and add class (Fixed: Dynamic number of classes)
+function addClassById(elementId, ...classes) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    // Filter out any undefined or empty values safely
+    const validClasses = classes.filter((c) => c);
+    if (validClasses.length > 0) {
+      element.classList.add(...validClasses);
+    }
+  }
+  return element;
+}
+
+// get id and remove class (Fixed: Dynamic number of classes)
+function removeClassById(elementId, ...classes) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    const validClasses = classes.filter((c) => c);
+    if (validClasses.length > 0) {
+      element.classList.remove(...validClasses);
+    }
+  }
+  return element;
+}

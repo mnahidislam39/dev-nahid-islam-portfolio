@@ -38,3 +38,45 @@ const myProjects = [
     aos: "zoom-in",
   },
 ];
+
+//  2. Services Data Array
+const myServices = [
+  {
+    iconClass: "fa-solid fa-code",
+    title: "web-design",
+    description:
+      "I will design educational websites, blogs, restaurants, e-commerce, etc Whatever you want. That will be looking good. I hope you will be satisfied to work with me. I will try my best to give my best.",
+  },
+  {
+    iconClass: "fa-brands fa-dev",
+    title: "web-development",
+    description:
+      "I will develop your website. You can hire me for your website. I hope you will be satisfied. I will try my best to give my best.",
+  },
+  {
+    iconClass: "fas fa-business-time",
+    title: "24/6 First Delivery",
+    description:
+      "24/6 hours as soon as possible I will try to deliver the project.",
+  },
+  {
+    iconClass: "fab fa-staylinked",
+    title: "support",
+    description:
+      "I always try to support my clients 24/6 hours as soon as possible. I will try to support you with any Problems On the web if you are my client.",
+  },
+];
+
+// 3. Tutorials Data Array
+const myTutorials = [
+  {
+    title: "Coming Soon",
+    // videoSrc: "assets/file/video/nahid.mp4", // If using a local file
+    isEmbed: false, // Put true if using YouTube iframe later
+  },
+];
+
+// project-data.js ফাইলের একদম নিচে এই ৩টি লাইন যোগ করুন:
+window.myProjects = myProjects;
+window.myServices = myServices;
+window.myTutorials = myTutorials;
