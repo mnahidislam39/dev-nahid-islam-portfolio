@@ -31,6 +31,40 @@ window.addEventListener("scroll", () => {
 });
 
 // Template Render Engines
+
+// Render Home
+function renderHomeSection(data) {
+  if (!data) return;
+
+  const bgElem = document.getElementById("home-bg");
+  const profileElem = document.getElementById("home-profile");
+  const nameElem = document.getElementById("home-name");
+  const designationElem = document.getElementById("home-designation");
+  const cvElem = document.getElementById("home-cv");
+  const socialsContainer = document.getElementById("home-socials");
+
+  if (bgElem) bgElem.src = data.bgImage;
+  if (profileElem) profileElem.src = data.profileImage;
+  if (nameElem)
+    nameElem.innerHTML = `${data.firstName} <span>${data.lastName}</span>`;
+  if (designationElem) designationElem.textContent = data.designation;
+  if (cvElem) cvElem.href = data.cvLink;
+
+  if (socialsContainer && data.socialLinks) {
+    socialsContainer.innerHTML = data.socialLinks
+      .map(
+        (social) => `
+      <li>
+         <a href="${social.url}" target="_blank">
+            <span><i class="${social.icon}"></i></span>
+         </a>
+      </li>
+    `,
+      )
+      .join("");
+  }
+}
+
 // Render About
 function renderAboutSection(data) {
   if (!data) return;
@@ -220,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = getClass(".container");
 
   // Render dynamic views with window check to prevent ordering bugs
+  renderHomeSection(window.myHomeData || myHomeData);
   renderAboutSection(window.myAboutData || myAboutData);
   renderTutorials(window.myTutorials || myTutorials);
   renderServices(window.myServices || myServices);

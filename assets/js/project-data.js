@@ -1,4 +1,39 @@
-// 1. About Me Complete Data
+//  Home Complete Data
+const myHomeData = {
+  bgImage: "assets/images/bgimage.jpg",
+  profileImage: "assets/images/nahidislam.jpg",
+  firstName: "Nahid",
+  lastName: "Islam",
+  designation: "a Professional",
+  cvLink: "assets/file/resumeOfnahid.pdf",
+  socialLinks: [
+    {
+      platform: "facebook",
+      icon: "fab fa-facebook",
+      url: "https://www.facebook.com/nahidislamfbp",
+    },
+    {
+      platform: "linkedin",
+      icon: "fab fa-linkedin",
+      url: "https://www.linkedin.com/in/mnahidislam39/",
+    },
+    {
+      platform: "github",
+      icon: "fab fa-github",
+      url: "https://github.com/mnahidislam39",
+    },
+    {
+      platform: "behance",
+      icon: "fab fa-behance",
+      url: "https://www.behance.net/mnahidislam39",
+    },
+  ],
+};
+
+// Global Sync
+window.myHomeData = myHomeData;
+
+// About Me Complete Data
 const myAboutData = {
   bio: `I am a Shopify-focused Full-Stack Web Developer and Team Leader, currently leading a team in delivering high-quality eCommerce solutions. My primary expertise lies in Shopify      store development, customization, and performance optimization, helping businesses build scalable and conversion-focused online stores.
 
@@ -52,7 +87,7 @@ const myTutorials = [
   },
 ];
 
-// 3. Services Data Array
+//  Services Data Array
 const myServices = [
   {
     iconClass: "fa-solid fa-code",
@@ -80,7 +115,7 @@ const myServices = [
   },
 ];
 
-// 4. Project Data Array
+//  Project Data Array
 const myProjects = [
   {
     title: "Kushtia Polytechnic Institute",
@@ -121,10 +156,10 @@ const myProjects = [
   },
 ];
 
-// 5. Contact Data
+//  Contact Data
 const myContactData = {
   mapSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58256.84832685325!2d88.9842398893949!3d24.13477606834945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fea06f9ba1dd67%3A0x8c9a9a127b3e1c7f!2sIshwardi!5e0!3m2!1sen!2sbd!4v1701869211072!5m2!1sen!2sbd",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58256.84832685325!2d88.9842398893949!3d213477606834945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f11!3m3!1m2!1s0x39fea06f9ba1dd67%3A0x8c9a9a127b3e1c7f!2sIshwardi!5e0!3m2!1sen!2sbd!4v1701869211072!5m2!1sen!2sbd",
   heading: "Have You Any Question?",
   subHeading: "I'm At Your Services.",
   phone: "+8801761-005639",
