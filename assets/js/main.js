@@ -294,13 +294,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const dark_mode = getId("dark_mode");
   const container = getClass(".container");
 
-  // Render dynamic views with window check to prevent ordering bugs
-  renderHomeSection(window.myHomeData || myHomeData);
-  renderAboutSection(window.myAboutData || myAboutData);
-  renderTutorials(window.myTutorials || myTutorials);
-  renderServices(window.myServices || myServices);
-  renderPortfolio(window.myProjects || myProjects);
-  renderContactSection(window.myContactData || myContactData);
+  // ==========================================
+  // Safe Dynamic Views Rendering (Bulletproof)
+  // ==========================================
+
+  // 1. Home Section
+  if (typeof myHomeData !== "undefined" || window.myHomeData) {
+    renderHomeSection(window.myHomeData || myHomeData);
+  }
+
+  // 2. About Section
+  if (typeof myAboutData !== "undefined" || window.myAboutData) {
+    renderAboutSection(window.myAboutData || myAboutData);
+  }
+
+  // 3. Tutorials Section
+  if (typeof myTutorials !== "undefined" || window.myTutorials) {
+    renderTutorials(window.myTutorials || myTutorials);
+  }
+
+  // 4. Services Section
+  if (typeof myServices !== "undefined" || window.myServices) {
+    renderServices(window.myServices || myServices);
+  }
+
+  // 5. Portfolio Section
+  if (typeof myProjects !== "undefined" || window.myProjects) {
+    renderPortfolio(window.myProjects || myProjects);
+  }
+
+  // 6. Contact Section
+  if (typeof myContactData !== "undefined" || window.myContactData) {
+    renderContactSection(window.myContactData || myContactData);
+  }
 
   // Dynamic Navigation Link Router
   if (window.innerWidth >= desktop_width) {
