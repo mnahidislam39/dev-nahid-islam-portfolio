@@ -1,7 +1,7 @@
 @import "./base/all";
 
 // dark area
-.main_area {
+.nahid-main-area {
   .dark_is_on {
     .section {
       background-color: var(--light) !important;
@@ -114,12 +114,12 @@
     padding: 50px 0;
   }
 }
-.main_area .container {
+.nahid-main-area .container {
   @include min-xs {
     padding: 0px;
   }
 }
-.main_area {
+.nahid-main-area {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -1348,21 +1348,21 @@
   input#submit {
     margin: 0 auto;
   }
-  .main_area .container .home {
+  .nahid-main-area .container .home {
     height: 100vh;
   }
-  .main_area .container .home .home_contents {
+  .nahid-main-area .container .home .home_contents {
     height: 98vh;
   }
 
-  .main_area .container .home .home_contents .home_top .img {
+  .nahid-main-area .container .home .home_contents .home_top .img {
     margin: 270px 95px auto 95px;
   }
 }
 
 // media width 768px and up
 @media (min-width: 768px) {
-  .main_area {
+  .nahid-main-area {
     .container {
       .resume {
         .video_contents {
@@ -1391,7 +1391,7 @@
 
 // media width 992px and up
 @media (min-width: 992px) {
-  .main_area {
+  .nahid-main-area {
     .container {
       width: 75%;
       align-items: center;
@@ -1472,7 +1472,7 @@
 }
 
 @media (max-width: 1024px) {
-  .main_area {
+  .nahid-main-area {
     .container {
       .section {
         margin-top: 10px;
@@ -1483,7 +1483,7 @@
 
 // media width 1024px and up
 @media (min-width: 1024px) {
-  .main_area {
+  .nahid-main-area {
     .container {
       .top {
         right: 10%;
@@ -1494,7 +1494,7 @@
 
 // media width 1200px and up
 @media (min-width: 1200px) {
-  .main_area {
+  .nahid-main-area {
     .container {
       justify-content: space-evenly;
       margin: 5vh auto;
@@ -1593,7 +1593,7 @@
 
 // media width 1400px and up
 @media (min-width: 1400px) {
-  .main_area {
+  .nahid-main-area {
     .container {
       .section {
         left: 460px;
