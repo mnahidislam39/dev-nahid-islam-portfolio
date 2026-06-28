@@ -559,14 +559,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Typed JS Engine Initialization
-  new Typed("#typedText", {
-    strings: ["Creative Designer", " ", "Full-Stack Developer"],
-    typeSpeed: 80,
-    backSpeed: 50,
-    loop: true,
-  });
+  // ==========================================
+  // Custom Vanilla JS Typing Animation
+  // ==========================================
+  const homeDataObj =
+    window.myHomeData ||
+    (typeof myHomeData !== "undefined" ? myHomeData : null);
+  const rolesToType =
+    homeDataObj && homeDataObj.typingRoles
+      ? homeDataObj.typingRoles
+      : ["Full-Stack Developer", "Shopify Expert"];
 
+  const targetElement = document.querySelector(".typing-text"); // আপনার HTML এ ক্লাস typing-text না হলে সেটা এখানে দিন
+  if (targetElement) {
+    let wordIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+
+    function typeEffect() {
+      const currentWord = rolesToType[wordIdx];
+      if (deleting) {
+        targetElement.textContent = currentWord.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        targetElement.textContent = currentWord.substring(0, charIdx + 1);
+        charIdx++;
+      }
+
+      let speed = deleting ? 40 : 80;
+
+      if (!deleting && charIdx === currentWord.length) {
+        speed = 2000; // শব্দ শেষ হলে ২ সেকেন্ড থামবে
+        deleting = true;
+      } else if (deleting && charIdx === 0) {
+        deleting = false;
+        wordIdx = (wordIdx + 1) % rolesToType.length;
+        speed = 500;
+      }
+
+      setTimeout(typeEffect, speed);
+    }
+
+    typeEffect();
+  }
   // Dynamic Skills Skillbar Progress
   let numberPercent = document.querySelectorAll(".countbar");
   numberPercent.forEach((items) => {
