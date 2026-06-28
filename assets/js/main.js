@@ -670,3 +670,22 @@ document.addEventListener("click", (e) => {
     closeCustomLightbox();
   }
 });
+
+// ১. মাউসের রাইট ক্লিক বন্ধ করা
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+
+// ২. F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U লক করা
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey &&
+      e.shiftKey &&
+      (e.key === "I" || e.key === "J" || e.key === "C")) ||
+    (e.ctrlKey && e.key === "U")
+  ) {
+    e.preventDefault();
+    return false;
+  }
+});
