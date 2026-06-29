@@ -343,7 +343,7 @@ $border-color: rgba(0, 0, 0, 0.1);
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      width: 60px;
+      width: 80px;
       height: 400px;
       background-color: var(--light);
       border-radius: 5px;
@@ -380,7 +380,6 @@ $border-color: rgba(0, 0, 0, 0.1);
 
           .active {
             a {
-              text-transform: capitalize;
               color: var(--primary) !important;
             }
           }
@@ -400,7 +399,7 @@ $border-color: rgba(0, 0, 0, 0.1);
               @include width(auto);
               padding-bottom: 10px;
               color: var(--dark);
-              text-transform: capitalize;
+              text-transform: uppercase;
             }
 
             &:last-child {
@@ -534,12 +533,6 @@ $border-color: rgba(0, 0, 0, 0.1);
               justify-content: space-evenly;
               align-items: center;
               color: var(--dark);
-              #home-name {
-                text-transform: uppercase;
-              }
-              h4 {
-                text-transform: uppercase;
-              }
 
               h5 {
                 font-size: 15px;
@@ -1912,7 +1905,7 @@ $border-color: rgba(0, 0, 0, 0.1);
 
       .home {
         width: 320px;
-        left: 65px;
+        left: 85px;
         position: absolute;
         box-shadow: 8px 0 15px -10px #000;
         border-radius: 5px;
@@ -1970,7 +1963,7 @@ $border-color: rgba(0, 0, 0, 0.1);
   .nahid-main-area {
     .container {
       .section {
-        left: 460px;
+        left: 480px;
       }
 
       .home {
