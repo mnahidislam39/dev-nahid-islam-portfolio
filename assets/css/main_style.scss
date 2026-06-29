@@ -1,5 +1,24 @@
 @import "./base/all";
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+$xxl-width: 1400px;
 
+// 1. Core Colors (Brand Colors)
+$primary: #00bf63; // Apnar green brand color
+$secondary: #051d40;
+$white: #ffffff;
+$black: #000000;
+$navy-dark: #0a192f;
+$gray-light: #f8f9fa;
+$gray-text: #64748b;
+
+// 2. Functional Color Mapping (Local Names)
+$text-color: $secondary;
+$process-blue: $primary;
+$slate-text: $gray-text;
+$border-color: rgba(0, 0, 0, 0.1);
 // dark area
 .nahid-main-area {
   .dark_is_on {
@@ -20,7 +39,7 @@
 
     .about {
       .about_contents {
-        .about_info {
+        .about-top {
           .ab_right {
             ul {
               li {
@@ -228,27 +247,6 @@
     .sub_card {
       padding: 0 15px;
     }
-
-    // #white_mode {
-    //   position: fixed;
-    //   right: -999px;
-    //   top: 6%;
-    //   z-index: 999;
-    //   color: var(--light);
-    //   font-size: 25px;
-    //   background: var(--dark);;
-    //   width: 30px;
-    //   height: 30px;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: center;
-    //   border-radius: 20px;
-    //   cursor: pointer;
-    // }
-
-    // .open {
-    //   right: 20px !important;
-    // }
 
     .clients {
       padding: 20px;
@@ -536,9 +534,10 @@
               justify-content: space-evenly;
               align-items: center;
               color: var(--dark);
-
+              #home-name {
+                text-transform: uppercase;
+              }
               h4 {
-                font-size: 34px;
                 text-transform: uppercase;
               }
 
@@ -627,7 +626,7 @@
       .about_contents {
         color: var(--dark);
 
-        .about_info {
+        .about-top {
           text-transform: initial;
           display: grid;
           grid-template-columns: repeat(1, 1fr);
@@ -644,7 +643,7 @@
 
             p {
               font-weight: normal;
-              padding: 10px 0;
+
               display: flex;
               flex-direction: column;
               gap: 12px;
@@ -706,105 +705,477 @@
           }
         }
 
-        .about_my_skill {
-          padding-bottom: 10px;
+        /* About Section Core */
+        .about-middle {
+          display: flex;
+          align-items: center;
+          align-items: flex-start;
+          gap: 2rem;
+          width: 100%;
 
-          h4 {
-            font-size: 18px;
-            padding-bottom: 5px;
+          @media (max-width: $lg-width) {
+            flex-direction: column; /* মোবাইলে উপর-নিচ হয়ে যাবে */
+            gap: 3rem;
+          }
+          /* বাম পাশের কন্টেন্ট এরিয়া - ৬০% উইডথ */
+          .about-middle-left {
+            flex: 1 0 55%;
+            max-width: 60%;
+
+            @media (max-width: $lg-width) {
+              flex: 0 0 100%;
+              max-width: 100%;
+            }
           }
 
-          p {
-            text-transform: initial;
+          /* ডান পাশের কার্ড এরিয়া - ৪০% উইডথ */
+          .about-middle-right {
+            flex: 1 0 40%;
+            max-width: 40%;
+            width: 100%;
+
+            @media (max-width: $lg-width) {
+              flex: 0 0 100%;
+              max-width: 100%;
+            }
           }
 
-          .skill {
+          /* Common Section Components */
+          .section-tag {
+            justify-content: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: $text-color;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+
+            .line {
+              width: 30px;
+              height: 2px;
+              background-color: $primary;
+            }
+          }
+
+          .section-title {
+            color: #000;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+
+            @media (max-width: $lg-width) {
+              text-align: left;
+              font-size: 2.5rem;
+            }
+          }
+
+          .gradient-line {
+            background: linear-gradient(90deg, $secondary, $primary);
+            margin-bottom: 2.5rem;
+            border-radius: 2px;
+            height: 3px; /* লাইনের থিকনেস ঠিক রাখার জন্য */
+          }
+
+          .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 1.5rem;
+
+            strong {
+              color: #000;
+            }
+            @media (max-width: $lg-width) {
+              text-align: left;
+            }
+          }
+
+          /* Stats Cards - Grid ব্যবহার করা হয়েছে */
+          .about-stats-grid {
+            display: grid;
             grid-template-columns: repeat(1, 1fr);
-            grid-gap: 20px;
-            align-items: start;
+            gap: 1rem;
 
-            h4 {
-              text-align: center;
-              font-size: 16px;
-              color: var(--sweet-solid);
+            @media (max-width: 480px) {
+              grid-template-columns: 1fr; /* ছোট মোবাইলে ১ কলাম হবে */
             }
 
-            .font_end,
-            .back_end {
-              h4 {
-                span {
-                  color: var(--primary);
-                }
+            .stat-card {
+              background: #f8fafc;
+              padding: 0.8rem;
+              border-radius: 16px;
+              border: 1px solid #e2e8f0;
+              transition: 0.3s;
+
+              &:hover {
+                transform: translateY(-5px);
+                border-color: $primary;
+                box-shadow: 0 10px 20px rgba($primary, 0.05);
+                background-color: rgba(
+                  $primary,
+                  0.02
+                ); /* ০.২ এর জায়গায় ০.০২ দিলে ব্যাকগ্রাউন্ড কালারটা সফট দেখাবে ভাই */
               }
 
-              .skills {
-                grid-template-columns: repeat(1, 1fr);
-                gap: 10px;
-                width: 100%;
-
-                .progress {
-                  .title {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 2px;
-
-                    h3 {
-                      text-transform: uppercase;
-                      font-weight: 500;
-                    }
-                  }
-
-                  .barline {
-                    height: 5px;
-                    background: #c8d6e5;
-                    border-radius: 20px;
-
-                    .countbar {
-                      height: 5px;
-                      background-color: var(--primary);
-                      border-top-left-radius: 20px;
-                      border-bottom-left-radius: 20px;
-                      position: relative;
-
-                      h3 {
-                        position: absolute;
-                        right: -19px;
-                        top: -35px;
-                        background-color: var(--primary);
-                        color: var(--light);
-                        padding: 4px 6px;
-                        font-size: 16px;
-                        font-weight: 400;
-                        border-radius: 5px;
-
-                        &::after {
-                          content: "";
-                          position: absolute;
-                          bottom: -10px;
-                          left: 50%;
-                          width: 11px;
-                          height: 11px;
-                          background-color: var(--primary);
-                          transform: rotate(45deg) translateX(-60%);
-                        }
-                      }
-                    }
-                  }
-                }
+              h3 {
+                font-size: 2.2rem;
+                color: #000;
+                margin-bottom: 0.5rem;
               }
-            }
 
-            .font_end {
-              display: flex;
-              flex-direction: column;
-              grid-gap: 20px;
-            }
-
-            .back_end {
-              gap: 20px;
+              p {
+                color: $text-color;
+                font-size: 0.95rem;
+                font-weight: 500;
+              }
             }
           }
         }
+
+        /* Work With Me (Dark Box) */
+        .about-bottom {
+          .work-with-me {
+            margin-top: 10px;
+            .worksWithMe {
+              .wwm-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                color: $white;
+                @media (max-width: $lg-width) {
+                  grid-template-columns: 1fr;
+                  padding: 0px;
+                }
+
+                .wwm-title {
+                  color: #000;
+                  font-size: 2rem;
+                  margin-bottom: 30px;
+                }
+
+                .wwm-list {
+                  flex-direction: column;
+                }
+                .wwm-list li {
+                  display: flex;
+                  gap: 15px;
+                  margin-bottom: 20px;
+                  color: #000000;
+
+                  i {
+                    color: #000;
+                    margin-top: 5px;
+                  }
+                  strong {
+                    color: #000;
+                  }
+                }
+              }
+
+              .wwm-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+
+                @media (max-width: $sm-width) {
+                  grid-template-columns: 1fr;
+                }
+
+                .wwm-card {
+                  box-shadow: 0 10px 20px rgba(0, 191, 99, 0.1);
+                  border: 1px solid #e2e8f0;
+                  padding: 1rem;
+                  border-radius: 20px;
+                  text-align: center;
+                  transition: 0.3s;
+
+                  &:hover {
+                    background: rgba($white, 0.08);
+                    transform: translateY(-5px);
+                  }
+
+                  .wwm-icon {
+                    font-size: 1.8rem;
+                    margin-bottom: 15px;
+                  }
+                  h4 {
+                    font-size: 1rem;
+                    margin-bottom: 10px;
+                    color: #000000;
+                  }
+                  p {
+                    font-size: 0.9rem;
+                    color: #000000;
+                  }
+                }
+              }
+
+              /* Tech Pills */
+              .tech-header {
+                text-align: center;
+                margin: 50px 0 3rem;
+
+                .tech-title {
+                  font-size: 2.2rem;
+                  color: $primary;
+                }
+              }
+
+              .tech-pills-wrapper {
+                flex-wrap: wrap;
+                gap: 1.2rem;
+                max-width: 1000px;
+                margin: 0 auto;
+
+                .tech-pill {
+                  background: #000;
+                  padding: 0.8rem 1.5rem;
+                  border-radius: 12px;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  border: 1px solid #e2e8f0;
+                  transition: 0.3s;
+
+                  &:hover {
+                    background: $white;
+                    box-shadow: 0 10px 20px rgba($primary, 0.05);
+                    transform: translateY(-3px);
+                    border-color: $primary;
+                  }
+
+                  span {
+                    font-weight: 600;
+                    color: #334155;
+                  }
+                }
+              }
+            }
+          }
+          /* Values Grid */
+          .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 36px;
+
+            // @media (max-width: $sm-width) {
+            //   grid-template-columns: 1fr;
+            // }
+            // @include mq(md) {
+            //   grid-template-columns: repeat(2, 1fr);
+            // }
+
+            // @include mq(xl) {
+            //   grid-template-columns: repeat(3, 1fr);
+            // }
+            .value-card {
+              background: $white;
+              padding: 1rem;
+              border-radius: 24px;
+              border: 1px solid #f1f5f9;
+              box-shadow: 0 10px 20px rgba($primary, 0.05);
+              transition: 0.3s;
+
+              &:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 10px 20px rgba($primary, 0.1);
+                border-color: #e2e8f0;
+              }
+
+              .value-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 1.5rem;
+              }
+
+              .value-icon {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 14px;
+                font-size: 1.5rem;
+                color: $white;
+
+                &.icon-blue {
+                  background: linear-gradient(135deg, $primary);
+                }
+                &.icon-purple {
+                  background: linear-gradient(135deg, $primary);
+                }
+                &.icon-indigo {
+                  background: linear-gradient(135deg, $primary);
+                }
+              }
+
+              .value-badge {
+                background: $secondary;
+                color: $primary;
+                border: 1px solid #e2e8f0;
+                padding: 6px 14px;
+                border-radius: 50px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                height: fit-content;
+              }
+
+              h3 {
+                font-size: 1.4rem;
+                color: $black;
+                margin-bottom: 1rem;
+              }
+            }
+          }
+
+          /* About My Skill */
+          .about-my-skills {
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .skills-content {
+              h4 {
+                font-size: 18px;
+                padding-bottom: 5px;
+              }
+
+              p {
+                text-transform: initial;
+              }
+            }
+
+            #skills {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+              // --- 1. Tabs Navigation Styles ---
+              .skills-tabs-nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+
+                .tab-btn {
+                  padding: 12px 25px;
+                  border-radius: 50px;
+                  border: 1px solid rgba($black, 0.08);
+                  background: $white;
+                  font-weight: 600;
+                  color: $text-color;
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+
+                  i {
+                    font-size: 1.1rem;
+                    color: $primary;
+                  }
+
+                  &:hover {
+                    border-color: $primary;
+                    transform: translateY(-2px);
+                  }
+
+                  &.active {
+                    background: $primary;
+                    color: $white;
+                    border-color: $primary;
+
+                    i {
+                      color: $white;
+                    }
+                  }
+                }
+              }
+
+              // --- 2. Tabs Content & Grid ---
+              .skills-tabs-content {
+                .tab-pane {
+                  display: none; // Default hidden
+                  animation: fadeIn 0.5s ease;
+
+                  &.active {
+                    display: block; // Active one shown
+                  }
+                }
+
+                .skills-grid-single {
+                  max-width: 900px;
+                  margin: 0 auto;
+                  padding: 30px;
+                  border-radius: 30px;
+                  background: rgba($primary, 0.03);
+                  border: 1px solid rgba($black, 0.03);
+
+                  // Responsive column setup
+                  .skill-items {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 20px; // Horizontal gap
+                    column-gap: 50px;
+                    span.skill-number {
+                      display: none;
+                    }
+                    // @include mq(md) {
+                    //   grid-template-columns: repeat(2, 1fr);
+                    // }
+                  }
+                }
+                // --- 3. Progress Bar Styles (Keeping your logic) ---
+                .skill-item {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  .skill-info {
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: 600;
+                    color: $text-color;
+
+                    span {
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                    }
+                  }
+
+                  .progress-bar {
+                    width: 100%;
+                    height: 8px;
+                    background: rgba($black, 0.06);
+                    border-radius: 20px;
+                    overflow: hidden;
+
+                    .progress {
+                      height: 100%;
+                      width: 0; // Controlled by JS
+                      background: $primary;
+                      border-radius: 20px;
+                      // Transition disabled here because we sync it with JS numbers
+                      transition: none !important;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    // Simple Fade In Animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -1543,7 +1914,7 @@
         width: 320px;
         left: 65px;
         position: absolute;
-        box-shadow: 8px 0 15px -10px var(--bg-dark);
+        box-shadow: 8px 0 15px -10px #000;
         border-radius: 5px;
         overflow: hidden;
 
@@ -1563,12 +1934,15 @@
 
       .about {
         .about_contents {
-          .about_info {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          .about-top {
             @include grid_cols_1;
             gap: 15px;
           }
 
-          .about_my_skill {
+          .about-my-skills {
             .skill {
               .font_end {
                 .skills {

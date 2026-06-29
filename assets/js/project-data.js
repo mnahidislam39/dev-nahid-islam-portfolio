@@ -39,7 +39,7 @@ window.myHomeData = myHomeData;
 
 // About Me Complete Data
 const myAboutData = {
-  bio: `I am a Shopify-focused Full-Stack Web Developer and Team Leader, currently leading a team in delivering high-quality eCommerce solutions. My primary expertise lies in Shopify      store development, customization, and performance optimization, helping businesses build scalable and conversion-focused online stores.
+  bio: `I'm a Shopify-focused Full-Stack Web Developer, currently leading a team in delivering high-quality eCommerce solutions. My primary expertise lies in Shopify      store development, customization, and performance optimization, helping businesses build scalable and conversion-focused online stores.
 
    <span class="bio-second font-bold"> Alongside Shopify, I have strong expertise in HTML, CSS, Bootstrap, Tailwind CSS, SASS, JavaScript, jQuery, Vue.js, PHP, and Laravel, allowing me to handle both front-end and back-end development efficiently.</span>
 
