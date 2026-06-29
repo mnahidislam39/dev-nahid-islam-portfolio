@@ -81,3 +81,40 @@ const initSkills = () => {
 };
 
 document.addEventListener("DOMContentLoaded", initSkills);
+// Function for Counter Animation
+const startCountAnimation = (element) => {
+  const target = +element.getAttribute("data-target"); // Target number (e.g., 50)
+  const count = +element.innerText; // Current number (starts at 0)
+
+  // Animation speed adjust (jituku boro number, totuku fast hobe)
+  const speed = target / 100;
+
+  if (count < target) {
+    element.innerText = Math.ceil(count + speed);
+    setTimeout(() => startCountAnimation(element), 20); // 20ms por por update hobe
+  } else {
+    element.innerText = target + "+"; // Shesh-e '+' sign add korbe
+  }
+};
+
+// Intersection Observer Logic
+const observerOptions = {
+  threshold: 0.5, // Section-er 50% jokhon screen-e ashbe, tokhon start hobe
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const stats = entry.target.querySelectorAll(".stat-number");
+      stats.forEach((stat) => startCountAnimation(stat));
+      // Ekbar animation hoye gele bondho kore dibe jate bar bar na hoy
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// About section ta ke observe kora shuru koro
+const aboutSection = document.querySelector(".about-stats-grid");
+if (aboutSection) {
+  observer.observe(aboutSection);
+}

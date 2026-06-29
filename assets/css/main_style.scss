@@ -617,6 +617,9 @@ $border-color: rgba(0, 0, 0, 0.1);
     // about
     .about {
       .about_contents {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         color: var(--dark);
 
         .about-top {
@@ -789,7 +792,10 @@ $border-color: rgba(0, 0, 0, 0.1);
             gap: 1rem;
 
             @media (max-width: 480px) {
-              grid-template-columns: 1fr; /* ছোট মোবাইলে ১ কলাম হবে */
+              grid-template-columns: repeat(
+                2,
+                1fr
+              ); /* ছোট মোবাইলে ১ কলাম হবে */
             }
 
             .stat-card {
@@ -870,7 +876,7 @@ $border-color: rgba(0, 0, 0, 0.1);
                 gap: 10px;
 
                 @media (max-width: $sm-width) {
-                  grid-template-columns: 1fr;
+                  grid-template-columns: repeat(2, 1fr);
                 }
 
                 .wwm-card {
@@ -951,9 +957,9 @@ $border-color: rgba(0, 0, 0, 0.1);
             gap: 1rem;
             margin-top: 36px;
 
-            // @media (max-width: $sm-width) {
-            //   grid-template-columns: 1fr;
-            // }
+            @media (max-width: $sm-width) {
+              grid-template-columns: repeat(2, 1fr);
+            }
             // @include mq(md) {
             //   grid-template-columns: repeat(2, 1fr);
             // }
@@ -968,7 +974,9 @@ $border-color: rgba(0, 0, 0, 0.1);
               border: 1px solid #f1f5f9;
               box-shadow: 0 10px 20px rgba($primary, 0.05);
               transition: 0.3s;
-
+              @media (max-width: $sm-width) {
+                text-align: center;
+              }
               &:hover {
                 transform: translateY(-8px);
                 box-shadow: 0 10px 20px rgba($primary, 0.1);
@@ -979,6 +987,9 @@ $border-color: rgba(0, 0, 0, 0.1);
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 1.5rem;
+                @media (max-width: $sm-width) {
+                  align-items: center;
+                }
               }
 
               .value-icon {
@@ -990,7 +1001,10 @@ $border-color: rgba(0, 0, 0, 0.1);
                 border-radius: 14px;
                 font-size: 1.5rem;
                 color: $white;
-
+                @media (max-width: $sm-width) {
+                  width: 45px;
+                  height: 45px;
+                }
                 &.icon-blue {
                   background: linear-gradient(135deg, $primary);
                 }
@@ -1001,7 +1015,11 @@ $border-color: rgba(0, 0, 0, 0.1);
                   background: linear-gradient(135deg, $primary);
                 }
               }
-
+              .value-icon svg {
+                @media (max-width: $sm-width) {
+                  height: 16px;
+                }
+              }
               .value-badge {
                 background: $secondary;
                 color: $primary;
@@ -1013,12 +1031,19 @@ $border-color: rgba(0, 0, 0, 0.1);
                 display: flex;
                 align-items: center;
                 height: fit-content;
+                @media (max-width: $sm-width) {
+                  font-size: 0.6rem;
+                  text-align: left;
+                }
               }
 
               h3 {
                 font-size: 1.4rem;
                 color: $black;
                 margin-bottom: 1rem;
+                @media (max-width: $sm-width) {
+                  font-size: 1rem;
+                }
               }
             }
           }
@@ -1927,9 +1952,6 @@ $border-color: rgba(0, 0, 0, 0.1);
 
       .about {
         .about_contents {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
           .about-top {
             @include grid_cols_1;
             gap: 15px;
